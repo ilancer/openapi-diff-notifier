@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\OpenApiUrlRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=OpenApiUrlRepository::class)
@@ -19,11 +20,17 @@ class OpenApiUrl
 
     /**
      * @ORM\Column(type="text")
+     *
+     * @Assert\NotBlank()
+     * @Assert\Url()
      */
     private ?string $url = null;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(max=255)
      */
     private ?string $title = null;
 
