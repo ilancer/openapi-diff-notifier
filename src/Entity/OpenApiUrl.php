@@ -24,10 +24,11 @@ class OpenApiUrl
     private ?int $id = null;
 
     /**
-     * @ORM\Column(type="text", unique=true)
+     * @ORM\Column(type="string", length=255, unique=true)
      *
      * @Assert\NotBlank()
      * @Assert\Url()
+     * @Assert\Length(max=255)
      */
     private ?string $url = null;
 

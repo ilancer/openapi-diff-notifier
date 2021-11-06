@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\History;
 use App\Entity\OpenApiUrl;
 use App\Entity\Recipient;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -37,5 +38,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Openapi', 'fas fa-list', OpenApiUrl::class);
         yield MenuItem::linkToCrud('Recipient', 'fas fa-list', Recipient::class);
+        yield MenuItem::linkToCrud('History', 'fas fa-list', History::class);
     }
 }
