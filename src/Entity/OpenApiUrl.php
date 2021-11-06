@@ -3,11 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\OpenApiUrlRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=OpenApiUrlRepository::class)
+ *
+ * @UniqueEntity(fields={"url"})
  */
 class OpenApiUrl
 {
@@ -19,7 +24,7 @@ class OpenApiUrl
     private ?int $id = null;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", unique=true)
      *
      * @Assert\NotBlank()
      * @Assert\Url()
@@ -33,6 +38,21 @@ class OpenApiUrl
      * @Assert\Length(max=255)
      */
     private ?string $title = null;
+
+    /**
+     * @var Collection<int, Recipient>
+     *
+     * @ORM\ManyToMany(targetEntity=Recipient::class, inversedBy="openApiList")
+     */
+    private Collection $recipientList;
+
+    /**
+     *
+     */
+    public function __construct()
+    {
+        $this->recipientList = new ArrayCollection();
+    }
 
     /**
      * @return int|null
@@ -76,6 +96,46 @@ class OpenApiUrl
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function __toString()
+    {
+        return (string)$this->title;
+    }
+
+    /**
+     * @return Collection<int, Recipient>
+     */
+    public function getRecipientList(): Collection
+    {
+        return $this->recipientList;
+    }
+
+    /**
+     * @param Recipient $recipientList
+     * @return $this
+     */
+    public function addRecipientList(Recipient $recipientList): self
+    {
+        if (!$this->recipientList->contains($recipientList)) {
+            $this->recipientList[] = $recipientList;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Recipient $recipientList
+     * @return self
+     */
+    public function removeRecipientList(Recipient $recipientList): self
+    {
+        $this->recipientList->removeElement($recipientList);
 
         return $this;
     }

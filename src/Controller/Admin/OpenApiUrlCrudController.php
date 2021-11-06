@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\OpenApiUrl;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -41,6 +42,7 @@ class OpenApiUrlCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('url'),
             TextField::new('title'),
+            AssociationField::new('recipientList')->setLabel('Recipient list'),
         ];
     }
 }

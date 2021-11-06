@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\OpenApiUrl;
+use App\Entity\Recipient;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -34,6 +35,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Openapi list', 'fas fa-list', OpenApiUrl::class);
+        yield MenuItem::linkToCrud('Openapi', 'fas fa-list', OpenApiUrl::class);
+        yield MenuItem::linkToCrud('Recipient', 'fas fa-list', Recipient::class);
     }
 }
