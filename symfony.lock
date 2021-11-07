@@ -97,6 +97,9 @@
     "laminas/laminas-code": {
         "version": "4.4.3"
     },
+    "lukascivil/treewalker": {
+        "version": "0.41"
+    },
     "nikic/php-parser": {
         "version": "v4.13.1"
     },
@@ -196,6 +199,9 @@
             "src/Kernel.php",
             "src/Controller/.gitignore"
         ]
+    },
+    "symfony/http-client": {
+        "version": "v5.3.10"
     },
     "symfony/http-client-contracts": {
         "version": "v2.4.0"
