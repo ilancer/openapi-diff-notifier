@@ -35,6 +35,11 @@ class History
     private ?DateTimeImmutable $createdAt = null;
 
     /**
+     * @ORM\Column(type="boolean", options={"default": 0})
+     */
+    private bool $isNotified = false;
+
+    /**
      * @return int|null
      */
     public function getId(): ?int
@@ -104,6 +109,25 @@ class History
     public function setCreatedAt(DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isNotified(): bool
+    {
+        return $this->isNotified;
+    }
+
+    /**
+     * @param bool $isNotified
+     * @return self
+     */
+    public function setIsNotified(bool $isNotified): self
+    {
+        $this->isNotified = $isNotified;
 
         return $this;
     }

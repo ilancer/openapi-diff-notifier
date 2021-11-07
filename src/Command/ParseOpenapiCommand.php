@@ -157,6 +157,7 @@ class ParseOpenapiCommand extends Command
         $history->setOpenApi($openApi)
                 ->setData($data)
                 ->setCreatedAt(new DateTimeImmutable())
+                ->setIsNotified(false)
         ;
 
         $this->em->persist($history);
