@@ -10,7 +10,7 @@ framework:
                 options:
                     auto_setup: false
                     use_notify: true
-                    check_delayed_interval: 60000
+                    check_delayed_interval: 0
             # failed: 'doctrine://default?queue_name=failed'
             # sync: 'sync://'
 
